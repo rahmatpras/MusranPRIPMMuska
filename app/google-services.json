@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "94023021850",
+    "firebase_url": "https://musran-pr-ipm-muska.firebaseio.com",
+    "project_id": "musran-pr-ipm-muska",
+    "storage_bucket": "musran-pr-ipm-muska.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:94023021850:android:04d72aa91f2d764302a8a3",
+        "android_client_info": {
+          "package_name": "com.simamat.musranpripmmuska"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "94023021850-jffdr413mf65uumokjnot1ks2n9jsl57.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.simamat.musranpripmmuska",
+            "certificate_hash": "e957874977e71a2c9ff5473f205e61f68c088e82"
+          }
+        },
+        {
+          "client_id": "94023021850-6u4fkap1r542b5vj8qc5186srts0dn6p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvZDw0cJztdercumbZMy_4JaJpT90y2Vk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "94023021850-6u4fkap1r542b5vj8qc5186srts0dn6p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
