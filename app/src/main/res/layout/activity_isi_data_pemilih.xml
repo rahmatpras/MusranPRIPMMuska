@@ -16,12 +16,16 @@
             android:id="@+id/et_nama_pemilih"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Masukan Nama Lengkap"/>
+            android:hint="Masukan Nama Lengkap"
+            android:maxLines="1"
+            android:inputType="textCapWords"/>
         <EditText
             android:id="@+id/et_kelas_pemilih"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Masukan Kelas(XX TKJ 0)" />
+            android:hint="Masukan Kelas(XX TKJ 0)"
+            android:maxLines="1"
+            android:inputType="textCapCharacters"/>
         <Button
             android:id="@+id/btn_submit_pemilih"
             android:layout_width="match_parent"
