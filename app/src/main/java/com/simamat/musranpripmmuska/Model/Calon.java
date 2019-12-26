@@ -4,13 +4,15 @@ public class Calon {
 
     private String image;
     private String nama;
+    private String nomer;
 
     public Calon() {
     }
 
-    public Calon(String image, String nama) {
+    public Calon(String image, String nama, String nomer) {
         this.image = image;
         this.nama = nama;
+        this.nomer = nomer;
     }
 
     public String getImage() {
@@ -27,5 +29,13 @@ public class Calon {
 
     public void setNama(String nama) {
         this.nama = nama;
+    }
+
+    public String getNomer() {
+        return nomer;
+    }
+
+    public void setNomer(String nomer) {
+        this.nomer = nomer;
     }
 }

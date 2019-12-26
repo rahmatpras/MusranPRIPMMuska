@@ -27,5 +27,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent moveUser = new Intent(MainActivity.this, SignInAdminActivity.class);
+                startActivity(moveUser);
+            }
+        });
+
     }
 }

@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -49,23 +50,24 @@ public class PilihanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pilihan);
 
+        //setting action bar
+        getSupportActionBar().setTitle("Pilih Calon");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         //load calon
         rvCalon = (RecyclerView) findViewById(R.id.recycle_view);
         rvCalon.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         rvCalon.setLayoutManager(layoutManager);
-
-        Intent intent = getIntent();
-        final String namaPemlih = intent.getStringExtra("nama");
-        final String kelasPemilih = intent.getStringExtra("kelas");
         
         loadCalon();
-
 
     }
 
     private void loadCalon() {
 
+        //query firebasse database menampilkan seluruh data di table Calon
         Query query = FirebaseDatabase.getInstance()
                 .getReference("Calon");
 
@@ -76,11 +78,13 @@ public class PilihanActivity extends AppCompatActivity {
                     @Override
                     public Calon parseSnapshot(@NonNull DataSnapshot snapshot) {
                         return new Calon(snapshot.child("image").getValue().toString(),
-                                snapshot.child("nama").getValue().toString());
+                                snapshot.child("nama").getValue().toString(),
+                                snapshot.child("nomer").getValue().toString());
                     }
                 })
                 .build();
 
+        //adapter recycle view Pilih Calon
         adapter = new FirebaseRecyclerAdapter<Calon, CalonViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull final CalonViewHolder holder, int position, @NonNull final Calon model) {
@@ -90,6 +94,7 @@ public class PilihanActivity extends AppCompatActivity {
                         .resize(108, 108)
                         .centerCrop()
                         .into(holder.ivCalonImage);
+                holder.tvCalonNomer.setText(model.getNomer());
 
                 holder.setItemClickListener(new ItemClickListener() {
                     @Override
@@ -167,6 +172,16 @@ public class PilihanActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         adapter.stopListening();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();finish(); // close this activity and return to preview activity (if there is any)
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

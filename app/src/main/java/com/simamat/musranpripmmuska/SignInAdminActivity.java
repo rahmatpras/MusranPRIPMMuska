@@ -20,56 +20,56 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.simamat.musranpripmmuska.Common.Common;
-import com.simamat.musranpripmmuska.Model.User;
+import com.simamat.musranpripmmuska.Model.Admin;
 
-public class UserActivity extends AppCompatActivity {
+public class SignInAdminActivity extends AppCompatActivity {
 
-    private EditText etUsernameUser, etPasswordUser;
-    private Button btnSubmitUser;
+    private EditText etUsernameAdmin, etPasswordAdmin;
+    private Button btnSubmitAdmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user);
+        setContentView(R.layout.activity_sign_in_admin);
 
-        getSupportActionBar().setTitle("Sign In User");
+        getSupportActionBar().setTitle("Sign In Admin");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        etUsernameUser = (EditText) findViewById(R.id.et_username_user);
-        etPasswordUser = (EditText) findViewById(R.id.et_password_user);
-        btnSubmitUser = (Button) findViewById(R.id.btn_submit_user);
+        etUsernameAdmin = (EditText) findViewById(R.id.et_username_admin);
+        etPasswordAdmin = (EditText) findViewById(R.id.et_password_admin);
+        btnSubmitAdmin = (Button) findViewById(R.id.btn_submit_admin);
 
         //init firebase
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference table_user = database.getReference("User");
+        final DatabaseReference table_admin = database.getReference("Admin");
 
-        btnSubmitUser.setOnClickListener(new View.OnClickListener() {
+        btnSubmitAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final ProgressDialog mDialog = new ProgressDialog(UserActivity.this);
+                final ProgressDialog mDialog = new ProgressDialog(SignInAdminActivity.this);
                 mDialog.setMessage("Mohon Tunggu ....");
                 mDialog.show();
 
-                table_user.addValueEventListener(new ValueEventListener() {
+                table_admin.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         //cek data
-                        if (dataSnapshot.child(etUsernameUser.getText().toString()).exists()) {
+                        if (dataSnapshot.child(etUsernameAdmin.getText().toString()).exists()) {
                             //ambil informasi user
                             mDialog.dismiss();
-                            User user = dataSnapshot.child(etUsernameUser.getText().toString()).getValue(User.class);
-                            if (etPasswordUser.getText().toString().equals(user.getPassword())) {
-                                Intent isiDataPemilihIntent = new Intent(UserActivity.this, IsiDataPemilihActivity.class);
-                                Common.currentUser = user;
-                                startActivity(isiDataPemilihIntent);
+                            Admin admin = dataSnapshot.child(etUsernameAdmin.getText().toString()).getValue(Admin.class);
+                            if (etPasswordAdmin.getText().toString().equals(admin.getPassword().toString())) {
+                                Intent homeAdmin = new Intent(SignInAdminActivity.this, HomeAdminActivity.class);
+                                Common.currentAdmin = admin;
+                                startActivity(homeAdmin);
                                 finish();
                             } else {
-                                Toast.makeText(UserActivity.this, "Password salah!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignInAdminActivity.this, "Password salah!", Toast.LENGTH_SHORT).show();
                             }
                         } else {
                             mDialog.dismiss();
-                            final AlertDialog.Builder alertDialog = new AlertDialog.Builder(UserActivity.this);
+                            final AlertDialog.Builder alertDialog = new AlertDialog.Builder(SignInAdminActivity.this);
                             alertDialog.setMessage("Username salah !!!")
                                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                         @Override

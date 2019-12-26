@@ -10,21 +10,56 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_above="@+id/lay_masukan_data"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="center"
+        android:layout_marginBottom="28dp">
+        <ImageView
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:src="@drawable/ic_logo_smk"
+            android:layout_marginRight="16dp"/>
+        <ImageView
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:src="@drawable/ic_logo_musran_ipm"
+            android:layout_marginLeft="16dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_masukan_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerInParent="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Harap masukan data diri anda dengan benar :"
+            android:layout_gravity="center"
+            android:textColor="@color/colorBlack"
+            android:textSize="16dp"
+            android:layout_marginBottom="8dp"/>
         <EditText
+            android:layout_gravity="center"
             android:id="@+id/et_nama_pemilih"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Masukan Nama Lengkap"
             android:maxLines="1"
+            android:singleLine="true"
             android:inputType="textCapWords"/>
         <EditText
+            android:layout_gravity="center"
             android:id="@+id/et_kelas_pemilih"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Masukan Kelas(XX TKJ 0)"
             android:maxLines="1"
+            android:singleLine="true"
             android:inputType="textCapCharacters"/>
         <Button
             android:id="@+id/btn_submit_pemilih"

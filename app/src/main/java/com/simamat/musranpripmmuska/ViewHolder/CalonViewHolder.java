@@ -17,30 +17,25 @@ import com.simamat.musranpripmmuska.R;
 
 public class CalonViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    public TextView tvCalonNama;
+    public TextView tvCalonNama, tvCalonNomer, tvJumlahSuaraCalon;
     public ImageView ivCalonImage;
     public LinearLayout listCalon;
 
     private ItemClickListener itemClickListener;
-    private onItemClickListener listener;
 
     public CalonViewHolder(@NonNull final View itemView) {
         super(itemView);
 
+        //deskripsi dari layout
         listCalon = (LinearLayout) itemView.findViewById(R.id.list_calon);
         tvCalonNama = (TextView) itemView.findViewById(R.id.calon_nama);
         ivCalonImage = (ImageView) itemView.findViewById(R.id.calon_image);
+        tvCalonNomer = (TextView) itemView.findViewById(R.id.tv_calon_nomer_urut);
+        tvJumlahSuaraCalon = (TextView) itemView.findViewById(R.id.tv_jumlah_suara_masuk);
 
+        //menghubungkan dengan on Click
         itemView.setOnClickListener(this);
 
-    }
-
-    public interface onItemClickListener {
-        void onItemClick(DataSnapshot dataSnapshot, int position);
-    }
-
-    public void setOnItemClickListener (onItemClickListener listener) {
-        this.listener = listener;
     }
 
     public void setItemClickListener(ItemClickListener itemClickListener) {
